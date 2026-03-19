@@ -1,0 +1,27 @@
+[0.620s] Invoking command in '/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/build --no-deps symlink_data
+[0.971s] running develop
+[1.239s] running egg_info
+[1.240s] creating p0_py.egg-info
+[1.275s] writing p0_py.egg-info/PKG-INFO
+[1.275s] writing dependency_links to p0_py.egg-info/dependency_links.txt
+[1.276s] writing entry points to p0_py.egg-info/entry_points.txt
+[1.277s] writing requirements to p0_py.egg-info/requires.txt
+[1.277s] writing top-level names to p0_py.egg-info/top_level.txt
+[1.278s] writing manifest file 'p0_py.egg-info/SOURCES.txt'
+[1.313s] reading manifest file 'p0_py.egg-info/SOURCES.txt'
+[1.313s] writing manifest file 'p0_py.egg-info/SOURCES.txt'
+[1.340s] running build_ext
+[1.340s] Creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/python3.12/site-packages/p0-py.egg-link (link to .)
+[1.341s] Installing nodo_pub_sndl script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+[1.342s] Installing nodo_sub_pub_rads script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+[1.343s] Installing primer_node script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+[1.343s] Installing subscriber_node script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+[1.343s] 
+[1.343s] Installed /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py
+[1.343s] running symlink_data
+[1.343s] creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index
+[1.343s] creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index
+[1.343s] creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index/packages
+[1.345s] symbolically linking /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/resource/p0_py -> /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index/packages
+[1.345s] symbolically linking /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/package.xml -> /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/p0_py
+[1.399s] Invoked command in '/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/build --no-deps symlink_data

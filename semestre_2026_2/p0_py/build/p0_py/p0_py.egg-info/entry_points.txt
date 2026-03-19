@@ -1,0 +1,5 @@
+[console_scripts]
+nodo_pub_sndl = p0_py.nodo_pub_sndl:main
+nodo_sub_pub_rads = nodo_sub_pub_rads_:main
+primer_node = p0_py.primer_nodo:main
+subscriber_node = p0_py.subscriber_node:main

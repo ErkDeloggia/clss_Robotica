@@ -24,7 +24,7 @@ class NodeCounter(Node):
         self.get_logger().info("Nodo subscriptor activo")
         
     def sub_cbck(self, msg):
-        self.counter_ += msg.data
+        self.counter_ = msg.data
         new_msg = Int64()
         new_msg.data = self.counter_
         self.publisher_counter_.publish(new_msg) 

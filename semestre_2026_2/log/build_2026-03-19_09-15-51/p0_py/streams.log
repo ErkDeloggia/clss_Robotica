@@ -1,0 +1,18 @@
+[0.574s] Invoking command in '/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py/build --no-deps symlink_data
+[0.802s] running develop
+[0.941s] running egg_info
+[0.954s] writing p0_py.egg-info/PKG-INFO
+[0.955s] writing dependency_links to p0_py.egg-info/dependency_links.txt
+[0.955s] writing entry points to p0_py.egg-info/entry_points.txt
+[0.956s] writing requirements to p0_py.egg-info/requires.txt
+[0.956s] writing top-level names to p0_py.egg-info/top_level.txt
+[0.983s] reading manifest file 'p0_py.egg-info/SOURCES.txt'
+[0.984s] writing manifest file 'p0_py.egg-info/SOURCES.txt'
+[1.002s] running build_ext
+[1.002s] Creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/python3.12/site-packages/p0-py.egg-link (link to .)
+[1.002s] Installing primer_node_py script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/p0_py
+[1.003s] Installing subscriber_node_py script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/p0_py
+[1.003s] 
+[1.003s] Installed /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py
+[1.004s] running symlink_data
+[1.036s] Invoked command in '/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py/build --no-deps symlink_data

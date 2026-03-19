@@ -1,0 +1,25 @@
+running develop
+running egg_info
+creating p0_py.egg-info
+writing p0_py.egg-info/PKG-INFO
+writing dependency_links to p0_py.egg-info/dependency_links.txt
+writing entry points to p0_py.egg-info/entry_points.txt
+writing requirements to p0_py.egg-info/requires.txt
+writing top-level names to p0_py.egg-info/top_level.txt
+writing manifest file 'p0_py.egg-info/SOURCES.txt'
+reading manifest file 'p0_py.egg-info/SOURCES.txt'
+writing manifest file 'p0_py.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/python3.12/site-packages/p0-py.egg-link (link to .)
+Installing nodo_pub_sndl script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+Installing nodo_sub_pub_rads script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+Installing primer_node script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+Installing subscriber_node script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/lib/p0_py
+
+Installed /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py
+running symlink_data
+creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index
+creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index
+creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index/packages
+symbolically linking /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/resource/p0_py -> /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/ament_index/resource_index/packages
+symbolically linking /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/build/p0_py/package.xml -> /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/p0_py/install/p0_py/share/p0_py

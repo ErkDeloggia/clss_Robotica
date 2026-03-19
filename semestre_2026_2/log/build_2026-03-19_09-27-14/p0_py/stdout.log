@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing p0_py.egg-info/PKG-INFO
+writing dependency_links to p0_py.egg-info/dependency_links.txt
+writing entry points to p0_py.egg-info/entry_points.txt
+writing requirements to p0_py.egg-info/requires.txt
+writing top-level names to p0_py.egg-info/top_level.txt
+reading manifest file 'p0_py.egg-info/SOURCES.txt'
+writing manifest file 'p0_py.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/python3.12/site-packages/p0-py.egg-link (link to .)
+Installing primer_node_py script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/p0_py
+Installing subscriber_node_py script to /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/install/p0_py/lib/p0_py
+
+Installed /home/arrgusr/ROS2Dev/clss_Robotica/semestre_2026_2/build/p0_py
+running symlink_data

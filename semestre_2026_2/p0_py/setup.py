@@ -25,7 +25,9 @@ setup(
     entry_points={
         'console_scripts': [
             'primer_node_py = p0_py.primer_nodo:main',
-            'subscriber_node_py = p0_py.subscriber_node:main'
+            'subscriber_node_py = p0_py.subscriber_node:main',
+            'nodo_pub_sndl = p0_py.nodo_pub_sndl:main',
+            'nodo_sub_pub_rads = p0_py.nodo_sub_pub_rads:main'
         ],
     },
 )
