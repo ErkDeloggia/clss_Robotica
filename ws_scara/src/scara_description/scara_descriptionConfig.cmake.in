@@ -1,0 +1,14 @@
+# - Config file for the scara_description package
+# It defines the following variables
+#  scara_description_INCLUDE_DIRS - include directories for FooBar
+#  scara_description_LIBRARIES    - libraries to link against
+#  scara_description_EXECUTABLE   - the bar executable
+
+set(scara_description_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${scara_description_DIR}/export_scara_description.cmake")
+
+# These are IMPORTED targets created by scara_descriptionTargets.cmake
+
+

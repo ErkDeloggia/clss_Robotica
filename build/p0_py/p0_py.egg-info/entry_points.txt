@@ -1,3 +1,0 @@
-[console_scripts]
-primer_node_py = p0_py.primer_nodo:main
-subscriber_node_py = p0_py.subscriber_node:main

@@ -1,0 +1,9 @@
+# Carpetas de compilación de ROS 2
+build/
+install/
+log/
+
+# Archivos de Python y sistema
+__pycache__/
+.DS_Store
+*.pyc
