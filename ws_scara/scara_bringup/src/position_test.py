@@ -17,7 +17,6 @@ class TrajectoryTest(Node):
         self.goal_positions = [1.57, 1.57, 1.57]
         self.get_logger().info('Controller is running and publishing to topic: {}'.format(topic_name))
 
-        
 
 def main(args=None):
     rclpy.init(args=args)

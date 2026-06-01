@@ -7,9 +7,9 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-#find_package(ament_cmake_python REQUIRED) #for python scripts
+find_package(ament_cmake_python REQUIRED) #for python scripts
 #find_package(rclcpp REQUIRED)
-#find_package(rclpy REQUIRED) #for python scripts
+find_package(rclpy REQUIRED) #for python scripts
 #find_package(geometry_msgs REQUIRED)
 #find_package(nav_msgs REQUIRED)
 #find_package(tf2 REQUIRED)
@@ -26,10 +26,12 @@ install(
 #ament_python_install_package(${PROJECT_NAME})
 
 # Install Python executables #They must start with the shebag tag
-#install(PROGRAMS
-#  src/trajectory_test.py
-#  src/tray_test.py
-#  src/multi_tray.py
-#  DESTINATION lib/${PROJECT_NAME} )
+install(PROGRAMS
+src/position_test.py
+src/position_test2.py
+src/trajectory_test.py
+src/tray_test.py
+src/multi_tray.py
+DESTINATION lib/${PROJECT_NAME} )
 
 ament_package()

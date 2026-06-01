@@ -126,3 +126,10 @@
     </joint>
 
 </robot>
+
+
+
+<origin xyz="0 0 0" rpy="1.5708 0 0"/>
+
+
+
