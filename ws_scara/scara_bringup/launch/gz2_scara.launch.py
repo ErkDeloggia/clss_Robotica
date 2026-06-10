@@ -59,8 +59,8 @@ def generate_launch_description():
 
     return LaunchDescription([
         robot_state_publisher_node,
-        gz_sim,
+        gz_sim,     
         spaw_entity,
         gz_ros_bridge_node,
-        rviz_node
+        rviz_node    
     ])

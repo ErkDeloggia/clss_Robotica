@@ -36,12 +36,12 @@ class ScaraControl(Node):
 
         # Enviar comandos de la posicion inicial
         
-        x_i = 0.6
-        y_i = -0.5
+        x_i = 0.3
+        y_i = 0.3
         theta_i = 0
 
-        x_j = 0.6
-        y_j = 0.5
+        x_j = 0.8
+        y_j = 0.8
         theta_j = 0
 
         theta_1_i, theta_2_i, theta_3_i = cin_inv(x_i, y_i, theta_i)

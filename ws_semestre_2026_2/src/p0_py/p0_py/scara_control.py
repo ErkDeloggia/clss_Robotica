@@ -91,7 +91,7 @@ def cin_inv(x_in, y_in, theta_in, x_fin, y_fin, theta_fin):
 
     theta_3_in = theta_in -theta_1_in -theta_2_in
 
-    return theta_1_in,theta_2_in
+    return theta_1_in, theta_2_in, theta_3_in
 
 
 def main(args= None):
