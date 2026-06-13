@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="roarm" xmlns:xacro="http://ros.org">
+
+  <!-- Definición del paquete actual -->
+  <xacro:property name="package_name" value="roarm_description"/>
+
+  <!-- Inclusión del modelo físico real del RoArm con la sintaxis oficial -->
+  <xacro:include filename="$(find roarm_description)/urdf/roarm.urdf"/>
+
+  <!-- Inclusión de los controladores y plugins para Gazebo Sim -->
+  <xacro:include filename="$(find roarm_description)/urdf/roarm_gz2.xacro"/>
+
+  <!-- Inclusión de sensores opcionales por si los necesitas después -->
+  <!-- <xacro:include filename="$(find roarm_description)/urdf/camera_sensor.xacro"/> -->
+<!-- <xacro:include filename="$(find roarm_description)/urdf/lidar_sensor.xacro"/> -->
+
+</robot>

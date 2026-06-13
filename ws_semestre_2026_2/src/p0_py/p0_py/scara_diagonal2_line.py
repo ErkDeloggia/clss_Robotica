@@ -3,106 +3,102 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
-from math import cos, sin, atan2, acos, pow, sqrt
+from math import cos, sin, atan2, acos, sqrt, pow
 
-class ScaraControl(Node):
+class DiagonalTrajectoryPlanner(Node):
     def __init__(self):
-        super().__init__('q_plan_node')
+        super().__init__('scara_trajectory_planner')
         
-        # Publicadores unificados para Gazebo/Rviz
-        self.pub_joint01 = self.create_publisher(Float64, '/joint1/cmd_pos', 10)
-        self.pub_joint02 = self.create_publisher(Float64, '/joint2/cmd_pos', 10)
-        self.pub_joint03 = self.create_publisher(Float64, '/joint3/cmd_pos', 10)
+        # Publicadores unificados adaptados a la estructura real del RoArm
+        self.pub_joint01 = self.create_publisher(Float64, '/cintura/cmd_pos', 10)
+        self.pub_joint02 = self.create_publisher(Float64, '/brazo/cmd_pos', 10)
+        self.pub_joint03 = self.create_publisher(Float64, '/antebrazo/cmd_pos', 10)
         
-        # --- DEFINICIÓN DE LAS POSICIONES CARTESIANAS ---
-        # Coordenadas iniciales (Ajusta aquí a 0.3 si deseas usar tu nueva prueba)
-        self.x_i = 0.3
-        self.y_i = 0.3
-        self.theta_i = 0.0
-        
-        # Coordenadas finales (Ajusta aquí a 0.8 si deseas usar tu nueva prueba)
-        self.x_j = 0.8
-        self.y_j = 0.8
-        self.theta_j = 0.0
-        
-        # Parámetros de tiempo y trayectoria
-        self.tf = 10.0
+        # Variables globales de control para el ciclo infinito
+        self.direccion_ida = True 
         self.delta_t = 0.0
-        self.paso_actual = 1
-        self.total_pasos = 10  # Rango del 1 al 10 de tu bucle for
         
-        # --- RESOLUCIÓN DE CINEMÁTICA INVERSA INICIAL Y FINAL ---
-        # Se ejecuta una sola vez al arrancar el nodo
-        self.theta_1_i, self.theta_2_i, self.theta_3_i = self.cin_inv(self.x_i, self.y_i, self.theta_i)
-        self.theta_1_j, self.theta_2_j, self.theta_3_j = self.cin_inv(self.x_j, self.y_j, self.theta_j)
-        
-        # Objetos de mensaje persistentes (Evita crearlos en cada ciclo)
-        self.theta1_msg = Float64()
-        self.theta2_msg = Float64()
-        self.theta3_msg = Float64()
-        
-        # Temporizador: Se ejecuta cada 0.5 segundos (Reemplaza al time.sleep(0.5))
-        self.timer_control = self.create_timer(0.5, self.cbck_scara_control)
-        self.get_logger().info('Nodo controlador scara inicializado con cinemática inversa integrada.')
+        # Configuración de frecuencia: 20 Hz (Ejecución cada 0.05 segundos para máxima fluidez)
+        self.dt = 0.05 
+        self.timer_control = self.create_timer(self.dt, self.cbck_scara_control)
+        self.get_logger().info('Nodo controlador optimizado - Movimiento continuo y fluido iniciado')
 
     def cbck_scara_control(self):
-        if self.paso_actual <= self.total_pasos:
-            print('Intervalo de tiempo ' + str(self.paso_actual))
-            
-            # Tiempo normalizado
-            t_sim = self.delta_t / self.tf
-            
-            # --- INTERPOLACIÓN POLINOMIAL DE 5TO GRADO (Tu fórmula exacta) ---
-            theta_1_t = self.theta_1_i + (10*pow(t_sim,3) - 15*pow(t_sim,4) + 6*pow(t_sim,5)) * (self.theta_1_j - self.theta_1_i)
-            theta_2_t = self.theta_2_i + (10*pow(t_sim,3) - 15*pow(t_sim,4) + 6*pow(t_sim,5)) * (self.theta_2_j - self.theta_2_i)
-            theta_3_t = self.theta_3_i + (10*pow(t_sim,3) - 15*pow(t_sim,4) + 6*pow(t_sim,5)) * (self.theta_3_j - self.theta_3_i)
-            
-            # Asignación correcta a la propiedad .data
-            self.theta1_msg.data = float(theta_1_t)
-            self.theta2_msg.data = float(theta_2_t)
-            self.theta3_msg.data = float(theta_3_t)
-            
-            # Publicación hacia el simulador
-            self.pub_joint01.publish(self.theta1_msg)
-            self.pub_joint02.publish(self.theta2_msg)
-            self.pub_joint03.publish(self.theta3_msg)
-            
-            # Incrementos de estado
-            self.delta_t = self.delta_t + 1.0
-            self.paso_actual += 1
+        # 1. LIMITES REALES EN EL PLANO VERTICAL (VALIDADOS EN MATLAB)
+        x_in = 0.20
+        y_in = 0.25
+        theta_in = 0
+        
+        x_fin = 0.32
+        y_fin = 0.37
+        theta_fin = 0
+        
+        tf = 5.0 # 5 segundos por tramo
+        
+        # Evaluamos el avance en este instante de tiempo
+        t_sim = self.delta_t / tf
+        
+        # 2. EVALUACIÓN DEL POLINOMIO DE 5.° GRADO
+        s = 10*pow(t_sim, 3) - 15*pow(t_sim, 4) + 6 * pow(t_sim, 5)
+        
+        # 3. INTERPOLACIÓN LINEAL ASIGNANDO SENTIDO SEGÚN LA FASE ACTUAL
+        if self.direccion_ida:
+            x_t = x_in + s * (x_fin - x_in)
+            y_t = y_in + s * (y_fin - y_in)
+            theta_t = theta_in + s * (theta_fin - theta_in)
         else:
-            self.get_logger().info('Trayectoria finalizada correctamente.')
-            self.timer_control.destroy()
+            x_t = x_fin + s * (x_in - x_fin)
+            y_t = y_fin + s * (y_in - y_fin)
+            theta_t = theta_fin + s * (theta_in - theta_fin)
+        
+        # 4. CINEMÁTICA INVERSA EN CADA PASO (Plano Vertical)
+        q_cintura, q_hombro, q_codo = self.cin_inv(x_t, y_t, theta_t)
+        
+        # Publicación limpia de los datos hacia los tópicos de simulación
+        self.pub_joint01.publish(Float64(data=float(q_cintura)))
+        self.pub_joint02.publish(Float64(data=float(q_hombro)))
+        self.pub_joint03.publish(Float64(data=float(q_codo)))
+        
+        # Incrementamos el reloj interno en cada ciclo del timer
+        self.delta_t += self.dt
+        
+        # Si completamos los 5 segundos de la fase actual, reiniciamos el reloj e invertimos ruta
+        if self.delta_t >= tf:
+            self.delta_t = 0.0
+            self.direccion_ida = not self.direccion_ida
+            self.get_logger().info('Cambiando de fase en la trayectoria lineal diagonal.')
 
-    def cin_inv(self, x_in, y_in, theta_in):
-        # Parámetros físicos del robot
-        L1 = 0.5
-        L2 = 0.5
-        L3 = 0.3
+    def cin_inv(self, x_t_in, y_t_in, theta_t_in):
+        L1 = 0.0494  # Altura de la base
+        L2 = 0.2385  # Longitud del brazo
+        L3 = 0.236   # Longitud del antebrazo
         
-        # Desacoplamiento de muñeca
-        x_3_in = x_in - L3 * cos(theta_in)
-        y_3_in = y_in - L3 * sin(theta_in)
+        x_plano = x_t_in
+        y_plano = y_t_in - L1
         
-        # Ley de Cosenos
-        theta_2_in = acos((pow(x_3_in, 2) + pow(y_3_in, 2) - pow(L1, 2) - pow(L2, 2)) / (2 * L1 * L2))
-        beta = atan2(y_3_in, x_3_in)
+        cos_theta3 = (pow(x_plano, 2) + pow(y_plano, 2) - pow(L2, 2) - pow(L3, 2)) / (2 * L2 * L3)
+        cos_theta3 = max(-1.0, min(1.0, cos_theta3))
+        q2_val = acos(cos_theta3)
         
-        # Ángulo alfa con protección de paréntesis
-        alpha = acos((pow(x_3_in, 2) + pow(y_3_in, 2) + pow(L1, 2) - pow(L2, 2)) / (2 * L1 * sqrt(pow(x_3_in, 2) + pow(y_3_in, 2))))
+        beta = atan2(y_plano, x_plano)
         
-        # Configuración codo arriba
-        theta_1_in = beta - alpha
-        theta_3_in = theta_in - theta_1_in - theta_2_in
+        cos_psi = (pow(x_plano, 2) + pow(y_plano, 2) + pow(L2, 2) - pow(L3, 2)) / (2 * L2 * sqrt(pow(x_plano, 2) + pow(y_plano, 2)))
+        cos_psi = max(-1.0, min(1.0, cos_psi))
+        psi = acos(cos_psi)
         
-        return theta_1_in, theta_2_in, theta_3_in
+        q1_val = beta - psi
+        q0_val = 0.0
+        q3_val = theta_t_in - q1_val - q2_val
+        
+        return q0_val, q1_val, q2_val
 
 def main(args=None):
     rclpy.init(args=args)
-    node = ScaraControl()
+    node = DiagonalTrajectoryPlanner()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
+
